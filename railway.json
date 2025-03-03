@@ -1,7 +1,8 @@
 {
     "build": {
         "builder": "DOCKERFILE",
-        "dockerfilePath": "backend/Dockerfile"
+        "dockerfilePath": "backend/Dockerfile",
+        "context": "backend"
     },
     "deploy": {
         "startCommand": "yarn start"
@@ -11,7 +12,8 @@
             "name": "frontend",
             "build": {
                 "builder": "DOCKERFILE",
-                "dockerfilePath": "frontend/Dockerfile"
+                "dockerfilePath": "frontend/Dockerfile",
+                "context": "frontend"
             },
             "deploy": {
                 "startCommand": "nginx -g 'daemon off;'"
