@@ -66,9 +66,9 @@ The frontend will be available at `http://localhost:5173`.
 
 ## 🛠️ Authors
 **Esraa Mostafa**  
-**Mariam Helmy** 
-**Omnya Tarek** 
-**Samah Ali** 
+**Mariam Helmy**  
+**Omnya Tarek**  
+**Samah Ali**  
 
 > 🚀 If you like this project, don't forget to ⭐ the repo!
 
