@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+baseURL = 'http://localhost:5000/'
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [msg, setMsg] = useState([]);
+  useEffect(() => {
+    fetch(baseURL)
+      .then(res => res.json())
+      .then(data => setMsg(data))
+  }, [])
 
   return (
     <>
@@ -17,6 +25,11 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <div>
+      {msg && msg.map((data, index) => (
+        <div key={index}>{data.message}</div>
+      ))}
+      </div>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -31,5 +44,5 @@ function App() {
     </>
   )
 }
-
+  
 export default App

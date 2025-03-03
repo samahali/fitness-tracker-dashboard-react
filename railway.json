@@ -1,0 +1,32 @@
+{
+    "build": {
+      "builder": "DOCKERFILE",
+      "dockerfilePath": "backend/Dockerfile"  // Dockerfile
+    },
+    "deploy": {
+      "startCommand": "yarn start"
+    },
+    "services": [
+      {
+        "name": "frontend",
+        "build": {
+          "builder": "DOCKERFILE",
+          "dockerfilePath": "frontend/Dockerfile"  // Dockerfile
+        },
+        "deploy": {
+          "startCommand": "nginx -g 'daemon off;'"
+        }
+      },
+      {
+        "name": "mongo",
+        "image": "mongo",  // use mogo image direct for MongoDB 
+        "volumes": [
+          {
+            "type": "persistent",
+            "mountPath": "/data/db",
+            "name": "mongo-data"
+          }
+        ]
+      }
+    ]
+  }

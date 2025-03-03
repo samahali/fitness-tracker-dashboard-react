@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Test API Route
 app.get("/", (req, res) => {
-  res.send("Fitness Tracker API Running!");
+  res.json([{ message: "Fitness Tracker API Running!" }]);
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
