@@ -5,7 +5,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const API_BASE_URL = process.env.VITE_API_BASE_URL || "https://fitness-tracker-dashboard-react.onrender.com/";
 
-  console.log("🛠 API_BASE_URL from vite.config.js:", env.VITE_API_BASE_URL); // Debugging
+  console.log("🛠 API_BASE_URL from vite.config.js:", env.VITE_API_BASE_URL);
 
   return {
     plugins: [react()],
