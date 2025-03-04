@@ -1,35 +1,33 @@
-# Use Node.js v22.14.0 Alpine to build the frontend
+# 🛠️ Step 1: Build Frontend using Node.js
 FROM node:22.14.0-alpine AS builder
-
-# Enable Corepack (for Yarn 4+)
-RUN corepack enable
 
 WORKDIR /app
 
-# Copy package.json and yarn.lock first
-COPY package.json yarn.lock ./
+# Enable Corepack and set Yarn version
+RUN corepack enable && corepack prepare yarn@4.6.0 --activate
 
-# Install Yarn version 4.6.0
-RUN corepack prepare yarn@4.6.0 --activate
-
-# Disable PnP and use node_modules
-RUN yarn config set nodeLinker node-modules
+# Copy package.json and yarn.lock first to leverage Docker cache
+COPY ./package.json ./yarn.lock ./
 
 # Install dependencies
-RUN yarn install
+RUN yarn install --immutable --network-timeout 1000000
 
-# Copy the rest of the frontend code
-COPY . .
+# Copy the frontend source code
+COPY . .  
 
 # Build the frontend
 RUN yarn build
 
-# Use Nginx for serving static files
+# 🚀 Step 2: Use Nginx to Serve the Frontend
 FROM nginx:alpine
+
+# Copy built frontend files from builder stage to Nginx's public folder
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Expose the frontend port
+# Copy custom Nginx configuration (optional, if you need custom settings)
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
+

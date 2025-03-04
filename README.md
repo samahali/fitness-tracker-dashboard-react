@@ -45,7 +45,8 @@ Make sure **Docker** and **Docker Compose** are installed. Then, run:
 ```sh
 docker-compose up --build
 ```
-The app will be available at `http://localhost:80`.
+The frontend app will be available at `http://localhost:3000`.
+The backend app will be available at `http://localhost:5000`.
 
 ### **4️⃣ Run the App without Docker**
 #### **Backend:**
@@ -61,6 +62,7 @@ yarn
 yarn dev
 ```
 The frontend will be available at `http://localhost:5173`.
+The backend app will be available at `http://localhost:5000`.
 
 ---
 

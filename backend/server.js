@@ -12,12 +12,12 @@ app.use(express.json());
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
+  .then(() => console.log("MongoDB Connected samah"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
 // Test API Route
-app.get("/", (req, res) => {
-  res.json([{ message: "Fitness Tracker API Running!" }]);
+app.get("/healthcheck", (req, res) => {
+  res.status(200).json([{ message: "Fitness Tracker API Running!" }]);
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
