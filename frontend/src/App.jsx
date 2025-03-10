@@ -10,11 +10,13 @@ function App() {
   useEffect(() => {
     console.log("Inside useEffect - API_BASE_URL:", process.env.VITE_API_BASE_URL); // Log inside useEffect
 
+    // fetch(`${process.env.VITE_API_BASE_URL}/healthcheck`)
     fetch(`${process.env.VITE_API_BASE_URL}/healthcheck`)
+
       .then(res => res.json())
       .then(data => {
         console.log("API Response:", data); // Log API response
-        setMsg(data);
+        setMsg([data]);
       })
       .catch(err => console.error("Error fetching API:", process.env.VITE_API_BASE_URL, err));
   }, []);

@@ -1,6 +1,14 @@
-# Ignore Yarn PnP files
+# Ignore node_modules to prevent overwriting volumes
+node_modules
+
+# Ignore Yarn PnP files (This prevents missing dependencies inside the container)
 .pnp.*
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
+
+# Ignore unnecessary files
+.DS_Store
+.git
+.gitignore
