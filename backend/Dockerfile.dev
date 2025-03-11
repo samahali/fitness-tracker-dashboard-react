@@ -1,0 +1,20 @@
+# Use Node.js Alpine for development
+FROM node:22.14.0-alpine
+
+WORKDIR /app
+
+# Enable Corepack and set Yarn version
+RUN corepack enable && corepack prepare yarn@4.6.0 --activate
+
+# Copy package files first (better caching)
+COPY package.json yarn.lock ./
+
+# Install dependencies
+RUN yarn install --immutable --network-timeout 1000000
+
+# Copy all files (excluding node_modules due to .dockerignore)
+COPY . .
+
+# Expose port for backend
+EXPOSE 5000
+CMD ["yarn", "dev"]
