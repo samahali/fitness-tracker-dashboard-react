@@ -1,3 +1,6 @@
+# Ignore node_modules to prevent overwriting volumes
+node_modules
+
 # Ignore Yarn PnP files
 .pnp.*
 .yarn/cache
@@ -5,3 +8,4 @@
 .yarn/build-state.yml
 .yarn/install-state.gz
 .env.example
+.yarnrc.yml
