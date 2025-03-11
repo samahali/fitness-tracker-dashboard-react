@@ -49,6 +49,9 @@ JWT_SECRET=your_secret_key
 
 ## 🐳 Running the App with Docker  
 
+**Note:** The `docker-compose.yml` file here is implemented for local development only and is not intended for production. For production deployment, this project is hosted on **Render**, which handles the deployment with a `Dockerfile` rather than `docker-compose.yml`. 
+Additionally, for development, we use a `Dockerfile.dev` to configure the environment appropriately for local development.
+
 ### **3️⃣ Start the Docker Containers**  
 Make sure **Docker** and **Docker Compose** are installed, then run:  
 ```sh
@@ -56,7 +59,7 @@ docker-compose up --build
 ```
 or
 ```sh
-docker compose up build
+docker compose up --build
 ```
 - The **frontend** will be available at: `http://localhost:3000`  
 - The **backend** will be available at: `http://localhost:5000`  
@@ -98,6 +101,26 @@ docker exec -it fitness-tracker-dashboard-react-mongo-1 mongosh
 test> use fitnessDB
 fitnessDB> show collections
 fitnessDB> db.users.find().pretty()
+
+### Run Tests in Docker
+1- Run your tests inside the container:
+
+sh
+```
+docker compose exec backend yarn test
+```
+2- To run tests in watch mode (auto-restart when files change):
+
+sh
+```
+docker compose exec backend yarn test --watch
+```
+3- For test coverage:
+
+sh
+```
+docker compose exec backend yarn test --coverage
+```
 
 ## ⚡ Running the App Without Docker  
 If you prefer to run the app without Docker:
