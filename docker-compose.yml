@@ -28,6 +28,8 @@ services:
     volumes:
       - ./frontend:/app # Mount local backend folder into container
       - /app/.yarn  # Ignore Yarn cache directory
+    command: ["yarn", "dev", "--host"]
+
   mongo:
     image: mongo
     ports:

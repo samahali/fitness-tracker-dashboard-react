@@ -19,5 +19,5 @@ COPY . .
 EXPOSE 5173
 
 # Ensure dependencies are installed before running dev server
-# CMD ["sh", "-c", "yarn install --immutable && yarn dev"]
-CMD ["yarn", "dev", "--host"]
+CMD ["sh", "-c", "yarn install --immutable && yarn dev"]
+#CMD ["yarn", "dev", "--host"]
