@@ -13,7 +13,8 @@
 .pnp.*
 
 # Environment variables
-# .env
+.env
+.env.test
 
 # logs
 logs
