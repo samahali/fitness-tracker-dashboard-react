@@ -14,8 +14,12 @@
 
 # Environment variables
 .env
+.env.test
 
 # logs
 logs
+api/uploads/
 
 node_modules
+
+coverage

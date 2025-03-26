@@ -1,5 +1,24 @@
-const mongoose = require("mongoose");
-const { hashing } = require("../../utils");
+/**
+ * Mongoose Schema for Users.
+ *
+ * This schema defines the structure for storing user information,
+ * including personal details, authentication credentials, and profile data.
+ * It includes password hashing before saving and a method for password comparison.
+ *
+ * @module User
+ *
+ * @requires mongoose - MongoDB ODM for Node.js.
+ * @requires ../../utils/index.js - Utility functions for password hashing and comparison.
+ *
+ * @constant {mongoose.Schema} userSchema - Schema definition for user data.
+ *
+ * @example
+ * import User from './models/user.model.js';
+ * const newUser = new User({ firstName: "John", lastName: "Doe", email: "john@example.com", password: "securepass" });
+ * await newUser.save();
+ */
+import mongoose from "mongoose";
+import { hashPassword, comparePassword } from "../../utils/index.js";
 
 const userSchema = new mongoose.Schema(
   {
@@ -39,6 +58,7 @@ const userSchema = new mongoose.Schema(
     height: {
       type: Number,
     },
+    profileImage: { type: String }, // Store Cloudinary URL here
   },
   { timestamps: true }
 );
@@ -46,13 +66,13 @@ const userSchema = new mongoose.Schema(
 // Hash password only when it's modified
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-  this.password = await hashing.hashPassword(this.password); // Use hashing function
+  this.password = await hashPassword(this.password); // Use hashing function
   next();
 });
 
 // Add a method to compare passwords
 userSchema.methods.comparePassword = async function (enteredPassword) {
-  return await hashing.comparePassword(enteredPassword, this.password);
+  return await comparePassword(enteredPassword, this.password);
 };
 
 // Add a virtual field for full name
@@ -61,4 +81,4 @@ userSchema.virtual("fullName").get(function () {
 });
 
 const User = mongoose.model("User", userSchema);
-module.exports = User;
+export default User;
