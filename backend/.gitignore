@@ -13,9 +13,12 @@
 .pnp.*
 
 # Environment variables
-.env
+# .env
 
 # logs
 logs
+api/uploads/
 
 node_modules
+
+coverage
