@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+import bcrypt from "bcryptjs";
 
 /**
  * Hash a plain text password
@@ -20,4 +20,4 @@ const comparePassword = async (enteredPassword, hashedPassword) => {
   return await bcrypt.compare(enteredPassword, hashedPassword);
 };
 
-module.exports = { hashPassword, comparePassword };
+export { hashPassword, comparePassword };

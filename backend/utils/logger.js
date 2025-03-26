@@ -1,5 +1,27 @@
-const winston = require("winston");
-require("winston-daily-rotate-file");
+/**
+ * Logger Configuration using Winston and Daily Rotate File.
+ *
+ * This module sets up a Winston logger with the following features:
+ * - Logs messages to both console and rotating log files.
+ * - Uses the `winston-daily-rotate-file` transport to create new log files daily.
+ * - Compresses old log files to save space.
+ * - Maintains log files for 14 days before deletion.
+ * - Formats logs with timestamps and a readable message structure.
+ *
+ * @module logger
+ *
+ * @requires winston - A logging library for Node.js.
+ * @requires winston-daily-rotate-file - A Winston transport for rotating log files.
+ *
+ * @constant {winston.Logger} logger - Configured Winston logger instance.
+ *
+ * @example
+ * import { logger } from './logger.js';
+ * logger.info('Application started');
+ * logger.error('An error occurred');
+ */
+import winston from "winston";
+import "winston-daily-rotate-file";
 
 // Define a transport for rotating log files
 const transport = new winston.transports.DailyRotateFile({
@@ -11,7 +33,7 @@ const transport = new winston.transports.DailyRotateFile({
 });
 
 // Create a Winston logger instance
-const logger = winston.createLogger({
+export const logger = winston.createLogger({
   level: "info", // Log level (info, error, warn, debug, etc.)
   format: winston.format.combine(
     winston.format.timestamp(),
@@ -24,5 +46,3 @@ const logger = winston.createLogger({
     new winston.transports.Console(), // Console logging
   ],
 });
-
-module.exports = logger;

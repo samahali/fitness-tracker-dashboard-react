@@ -1,11 +1,12 @@
-const logger = require("./logger");
-const hashing = require("./hashing");
-const dateHelper = require("./dateHelper");
-const validator = require("./validator");
+import {logger} from "./logger.js";
+import {hashPassword, comparePassword} from "./hashing.js";
+// import dateHelper from "./dateHelper.js";
+// import validator from "./validator.js";
 
-module.exports = {
+export {
   logger,
-  dateHelper,
-  hashing,
-  validator,
+  // dateHelper,
+  hashPassword, 
+  comparePassword,
+  // validator,
 };

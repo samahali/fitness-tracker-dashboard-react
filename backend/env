@@ -1,0 +1,21 @@
+PORT=5000
+MONGO_URI=mongodb://mongo:27017/fitnessDB
+
+# mongoose.connect("mongodb+srv://mongofitness:mpsegszPIqmYchYe@cluster0.fgyw5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+
+# {
+#     "message": "User created successfully",
+#     "user": {
+#         "firstName": "Ayman",
+#         "lastName": "Ahmed",
+#         "email": "aymanxxx@xxxx.com",
+#         "age": 20,
+#         "gender": "male",
+#         "weight": 100,
+#         "height": 170,
+#         "_id": "67ceed5b3d98c2ecd0ca55cd",
+#         "createdAt": "2025-03-10T13:47:07.298Z",
+#         "updatedAt": "2025-03-10T13:47:07.298Z",
+#         "__v": 0
+#     }
+# }
