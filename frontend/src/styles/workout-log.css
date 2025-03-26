@@ -1,0 +1,28 @@
+.workout-log {
+    padding: 1rem 0;
+  }
+  
+  .workout-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .workout-log-header .page-title {
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 576px) {
+    .workout-log-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  
+    .workout-log-header button {
+      width: 100%;
+    }
+  }
+  
+  
