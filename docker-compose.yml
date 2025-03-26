@@ -7,24 +7,34 @@ services:
       - "5000:5000"
     depends_on:
       - mongo
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/fitnessDB
+    env_file:
+      ./backend/.env
     volumes:
-      - ./backend:/app   # Mount local backend folder into container
+      - ./backend:/app
+    develop:
+      watch:
+        - action: sync
+          path: ./backend
+          target: /app
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile.dev
     ports:
-      - "3000:5173"  # Map Vite's default dev server port
-
+      - "5173:5173"
     env_file:
       - ./frontend/.env
     depends_on:
       - backend
     volumes:
-      - ./frontend:/app # Mount local backend folder into container
+      - ./frontend:/app
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /app
+
   mongo:
     image: mongo
     ports:
@@ -32,5 +42,13 @@ services:
     volumes:
       - mongo-data:/data/db
 
+  mongo-test:
+    image: mongo
+    ports:
+      - "27018:27017" # Using a different port than the main MongoDB instance
+    volumes:
+      - mongo-test-data:/data/db
+
 volumes:
   mongo-data:
+  mongo-test-data:
