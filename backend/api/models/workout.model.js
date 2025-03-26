@@ -1,4 +1,22 @@
-const mongoose = require("mongoose");
+/**
+ * Mongoose Schema for Workouts.
+ *
+ * This schema defines the structure for storing user workouts, including 
+ * type, exercise, duration, calories burned, and optional notes.
+ * Each workout is associated with a user.
+ *
+ * @module Workout
+ *
+ * @requires mongoose - MongoDB ODM for Node.js.
+ *
+ * @constant {mongoose.Schema} workoutSchema - Schema definition for workouts.
+ *
+ * @example
+ * import Workout from './models/workout.model.js';
+ * const workout = new Workout({ user: userId, type: 'cardio', exercise: 'Running', duration: 30 });
+ * await workout.save();
+ */
+import mongoose from "mongoose";
 
 const workoutSchema = new mongoose.Schema(
   {
@@ -36,4 +54,4 @@ const workoutSchema = new mongoose.Schema(
 
 const Workout = mongoose.model("Workout", workoutSchema);
 
-module.exports = Workout;
+export default Workout;
