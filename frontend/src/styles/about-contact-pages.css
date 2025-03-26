@@ -1,0 +1,535 @@
+/* Public pages common styles */
+.public-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden; /* Add this line to prevent horizontal scroll */
+}
+
+.public-page .content-wrapper {
+  margin-left: 0 !important;
+  width: 100%;
+}
+
+.public-page .main-content {
+  margin-left: 0 !important;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.public-page .container {
+  max-width: 1200px;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0 auto;
+}
+
+/* About Us Page */
+.mission-section {
+  margin-bottom: 4rem;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .mission-section {
+  background-color: var(--gray-100);
+}
+
+.mission-section:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.mission-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  padding: 2rem;
+  color: white;
+  text-align: center;
+}
+
+.mission-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.mission-tagline {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.mission-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.mission-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.mission-intro {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--gray-700);
+  margin-bottom: 2rem;
+}
+
+.dark-mode .mission-intro {
+  color: #e5e7eb;
+}
+
+.mission-values {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mission-value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.mission-value-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.dark-mode .mission-value-icon {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+}
+
+.mission-value-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--gray-800);
+}
+
+.dark-mode .mission-value-content h3 {
+  color: #f9fafb;
+}
+
+.mission-value-content p {
+  color: var(--gray-600);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.dark-mode .mission-value-content p {
+  color: #e5e7eb;
+}
+
+.mission-points-container {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: var(--gray-100);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+}
+
+.dark-mode .mission-points-container {
+  background-color: var(--gray-200);
+}
+
+.mission-point {
+  display: flex;
+  align-items: flex-start;
+}
+
+.mission-point-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .mission-point-icon {
+  background: var(--gray-100);
+}
+
+.mission-point-text h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--gray-800);
+}
+
+.dark-mode .mission-point-text h4 {
+  color: #f9fafb;
+}
+
+.mission-point-text p {
+  margin-bottom: 0;
+  color: var(--gray-600);
+}
+
+.dark-mode .mission-point-text p {
+  color: #e5e7eb;
+}
+
+.mission-image-container {
+  padding: 0 2.5rem 2.5rem;
+}
+
+.mission-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.mission-image:hover {
+  transform: scale(1.02);
+}
+
+.team-member-card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  background-color: white;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.dark-mode .team-member-card {
+  background-color: var(--gray-100);
+}
+
+.team-member-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.team-member-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-member-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--gray-900);
+}
+
+.dark-mode .team-member-name {
+  color: #f9fafb; /* Whiter text for team member names */
+}
+
+.team-member-role {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dark-mode .team-member-role {
+  color: var(--primary-color); /* Keep the role color as primary */
+}
+
+.team-member-bio {
+  color: var(--gray-600);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.dark-mode .team-member-bio {
+  color: #e5e7eb; /* Whiter text for team member bios */
+}
+
+.team-member-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+  transition: all 0.3s ease;
+}
+
+.dark-mode .social-icon {
+  background-color: var(--gray-200);
+  color: var(--gray-500);
+}
+
+.social-icon:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Contact Us Page */
+.contact-info-card,
+.contact-form-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  padding: 2.5rem;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .contact-info-card,
+.dark-mode .contact-form-card {
+  background: var(--gray-100);
+}
+
+.contact-info-card:hover,
+.contact-form-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+.form-group label {
+  margin-bottom: 1rem; /* Adjust as needed */
+  display: block; /* Ensures the label is on its own line */
+}
+
+.contact-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+  position: relative;
+}
+
+.contact-header-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-right: 1rem;
+}
+
+.contact-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-intro {
+  color: var(--gray-600);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.dark-mode .contact-intro {
+  color: #e5e7eb;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-method {
+  display: flex;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.contact-method:hover .contact-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+}
+
+.dark-mode .contact-icon {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+}
+
+.contact-method h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--gray-800);
+}
+
+.dark-mode .contact-method h5 {
+  color: #f9fafb;
+}
+
+.contact-method p {
+  margin-bottom: 0;
+  color: var(--gray-600);
+}
+
+.dark-mode .contact-method p {
+  color: #e5e7eb;
+}
+
+.contact-method a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.contact-method a:hover {
+  text-decoration: underline;
+}
+
+.contact-social h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--gray-800);
+}
+
+.dark-mode .contact-social h5 {
+  color: #e5e7eb;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.dark-mode .social-icon {
+  background-color: var(--gray-200);
+  color: var(--gray-500);
+}
+
+.social-icon:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.contact-map {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contact-map:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 992px) {
+  .mission-section {
+    padding: 2rem;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.dark-mode .form-label {
+  color: #e5e7eb; /* Whiter text for form labels */
+}
+
+/* Fix for mobile view */
+@media (max-width: 768px) {
+  .mission-section {
+    overflow: hidden; /* Prevent horizontal scroll */
+  }
+
+  .mission-content {
+    padding: 1.5rem; /* Reduce padding on mobile */
+  }
+
+  .mission-points-container {
+    padding: 1rem; /* Reduce padding on mobile */
+  }
+
+  .mission-image-container {
+    padding: 0 1rem 1rem; /* Reduce padding on mobile */
+  }
+
+  .team-member-card {
+    padding: 1.5rem; /* Reduce padding on mobile */
+  }
+}

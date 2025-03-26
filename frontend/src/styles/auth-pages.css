@@ -1,0 +1,223 @@
+/* Auth pages specific styles */
+.auth-page .content-wrapper {
+    margin-left: 0 !important;
+  }
+  
+  .auth-page .main-content {
+    margin-left: 0 !important;
+  }
+  
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    padding: 2rem 1rem;
+  }
+  
+  .dark-mode .auth-container {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.02), rgba(139, 92, 246, 0.02));
+  }
+  
+  .auth-card {
+    width: 100%;
+    max-width: 600px;
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    background-color: white;
+    transition: background-color var(--transition-speed) ease;
+  }
+  
+  .dark-mode .auth-card {
+    background-color: var(--gray-100);
+  }
+  
+  .auth-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .auth-logo .logo-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+  
+  .auth-logo h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+  
+  .auth-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--gray-900);
+    font-weight: 600;
+  }
+  
+  .dark-mode .auth-title {
+    color: #f9fafb; /* Whiter text for auth titles */
+  }
+  
+  /* Stepper styles */
+  .stepper-container {
+    margin-bottom: 2rem;
+  }
+  
+  .stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .step-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--gray-200);
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .dark-mode .step-icon {
+    background-color: var(--gray-300);
+    color: var(--gray-100);
+  }
+  
+  .step.active .step-icon {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .step.completed .step-icon {
+    background-color: var(--success-color);
+    color: white;
+  }
+  
+  .step-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    transition: color 0.3s ease;
+  }
+  
+  .dark-mode .step-label {
+    color: var(--gray-500);
+  }
+  
+  .step.active .step-label {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+  
+  .step.completed .step-label {
+    color: var(--success-color);
+  }
+  
+  .step-line {
+    flex: 1;
+    height: 2px;
+    background-color: var(--gray-200);
+    position: relative;
+    z-index: 0;
+  }
+  
+  .dark-mode .step-line {
+    background-color: var(--gray-300);
+  }
+  
+  .step-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--gray-800);
+    font-weight: 600;
+  }
+  
+  .dark-mode .step-title {
+    color: #f9fafb; /* Whiter text for step titles */
+  }
+  
+  .stepper-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .stepper-buttons button {
+    min-width: 120px;
+  }
+  
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--gray-700);
+  }
+  
+  .dark-mode .form-group label {
+    color: #e5e7eb; /* Whiter text for form labels */
+  }
+  
+  .auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--gray-600);
+  }
+  
+  .dark-mode .auth-footer {
+    color: var(--gray-400);
+  }
+  
+  .auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .auth-footer a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 576px) {
+    .auth-card {
+      padding: 1.5rem;
+    }
+  
+    .step-label {
+      font-size: 0.75rem;
+    }
+  
+    .step-icon {
+      width: 32px;
+      height: 32px;
+      font-size: 0.85rem;
+    }
+  }
+  
+  
