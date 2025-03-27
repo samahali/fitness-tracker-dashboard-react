@@ -17,6 +17,7 @@ const AboutUs = () => {
     {
       name: "Samah Ali",
       role: "Sr.Software Engineer",
+      initial: "SA",
       bio: `Passionate about building intuitive and responsive UIs with React, modern CSS, and Node.js. Skilled in HTML5, Bootstrap, Tailwind CSS, and Django.`,
       image: null, // Add image URL if available
       github: "https://github.com/samahali/",
