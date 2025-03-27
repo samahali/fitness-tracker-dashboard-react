@@ -10,6 +10,8 @@ import {
 } from "react-icons/fa"
 import "../styles/about-contact-pages.css"
 
+
+
 const AboutUs = () => {
   const teamMembers = [
     {
@@ -23,10 +25,9 @@ const AboutUs = () => {
     },
     {
       name: "Omnya Tarek",
-      role: "Software Engineer",
+      role: "Frontend developer || UI/UX Developer",
       bio: "Passionate about building intuitive and responsive UIs with React, modern CSS, and Node.js. Skilled in HTML5, Bootstrap, UI/UX.",
-      initial: "OT",
-      image: null, // Add image URL if available
+      image: "/omnya.jpeg",
       github: "https://github.com/omnyatarek",
       linkedin: "https://www.linkedin.com/in/omnya137/",
     },
