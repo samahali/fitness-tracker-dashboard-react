@@ -1,22 +1,4 @@
-/**
- * MongoDB Connection Singleton Utility.
- *
- * Ensures only a single instance of MongoDB connection is established using Mongoose.
- * Handles automatic reconnection in case of disconnection.
- *
- * @module connectDB
- *
- * @requires mongoose - MongoDB object modeling tool.
- * @requires ../../utils/index.js - Utility module containing the logger instance.
- *
- * @function getDBInstance
- * @async
- * @throws {Error} If the database connection fails, the process exits with status 1.
- *
- * @example
- * import dbInstance from './config/db.config.js';
- * await dbInstance.connect();
- */
+
 import mongoose from "mongoose";
 import { logger } from "../../utils/index.js";
 
@@ -32,14 +14,17 @@ class MongoDBSingleton {
   async connect() {
     if (this.connection) return this.connection; // Return existing connection
 
-    if (!process.env.MONGO_URI) {
-      logger.error("Missing MongoDB connection string (MONGO_URI)");
+    // Use the correct DB URI based on the environment
+    const mongoUri = process.env.NODE_ENV === "test" ? process.env.MONGO_TEST_URI : process.env.MONGO_URI;
+
+    if (!mongoUri) {
+      logger.error("Missing MongoDB connection string");
       process.exit(1);
     }
 
     try {
-      this.connection = await mongoose.connect(process.env.MONGO_URI);
-      logger.info(`MongoDB Connected: ${process.env.MONGO_URI}`);
+      this.connection = await mongoose.connect(mongoUri);
+      logger.info(`MongoDB Connected: ${mongoUri}`);
     } catch (error) {
       logger.error(`MongoDB Connection Error: ${error.message}`);
       process.exit(1);
@@ -63,4 +48,4 @@ class MongoDBSingleton {
 
 // Export a **single instance** of MongoDB connection
 const dbInstance = new MongoDBSingleton();
-export default dbInstance;
+export default dbInstance ;

@@ -15,4 +15,3 @@ const WorkoutSchema = new mongoose.Schema({
   caloriesBurned: Number,
 });
 module.exports = mongoose.model("Workout", WorkoutSchema);
-

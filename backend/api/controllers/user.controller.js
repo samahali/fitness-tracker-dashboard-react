@@ -75,13 +75,13 @@ const createUser = async (req, res, next) => {
 const updateProfile = async (req, res, next) => {
   try {
     const userId = req.user.userId;
-    const { firstName, lastName, age, gender, weight, height } = req.body;
+    const { firstName, lastName, age, gender, weight, height, email } = req.body;
 
-    if (req.body.email !== req.user.email) {
+    // Only prevent email change if the user actually tries to update it
+    if (email && email !== req.user.email) {
       return next({ status: 400, message: "Email cannot be changed." });
     }
 
-    // Update user data
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       { firstName, lastName, age, gender, weight, height },
