@@ -1,5 +1,3 @@
-"use client"
-
 import { Link, Navigate, useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { FaDumbbell, FaChartLine, FaBullseye, FaMobileAlt, FaLock, FaUserFriends } from "react-icons/fa"
