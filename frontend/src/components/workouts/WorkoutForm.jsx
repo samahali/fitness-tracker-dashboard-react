@@ -55,7 +55,6 @@ const WorkoutForm = ({ onSuccess }) => {
     <div className="workout-form-card fade-in">
       <div className="workout-form-header">
         <h5 className="workout-form-title">Log New Workout</h5>
-        <FaPlus className="workout-form-icon" />
       </div>
       <div className="workout-form-body">
         {error && (

@@ -52,7 +52,7 @@ const Dashboard = () => {
       <h1 className="page-title">Welcome, {currentUser?.firstName}!</h1>
 
       <div className="dashboard-grid">
-        <div className="grid-col-3">
+        <div className="grid-col-3 ">
           <StatCard title="Total Workouts" value={workoutStats.totalWorkouts} icon={FaDumbbell} variant="primary" />
         </div>
         <div className="grid-col-3">
@@ -167,7 +167,7 @@ const Dashboard = () => {
                             <div
                               className="rounded-circle p-2"
                               style={{
-                                backgroundColor: "rgba(245, 158, 11, 0.1)",
+                                backgroundColor: "rgba(154, 116, 51, 0.1)",
                                 color: "var(--warning-color)",
                               }}
                             >

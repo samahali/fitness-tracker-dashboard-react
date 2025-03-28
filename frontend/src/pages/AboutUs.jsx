@@ -15,18 +15,17 @@ const AboutUs = () => {
     {
       name: "Samah Ali",
       role: "Sr.Software Engineer",
-      bio: `Passionate about building intuitive and responsive UIs with React, modern CSS, and Node.js. Skilled in HTML5, Bootstrap, Tailwind CSS, and Django.`,
       initial: "SA",
+      bio: `Passionate about building intuitive and responsive UIs with React, modern CSS, and Node.js. Skilled in HTML5, Bootstrap, Tailwind CSS, and Django.`,
       image: null, // Add image URL if available
       github: "https://github.com/samahali/",
-      linkedin: "https://www.linkedin.com/in/samah-ali-software-developer/"
+      linkedin: "https://www.linkedin.com/in/samah-ali-software-developer/",
     },
     {
       name: "Omnya Tarek",
-      role: "Software Engineer",
+      role: "Frontend developer || UI/UX Developer",
       bio: "Passionate about building intuitive and responsive UIs with React, modern CSS, and Node.js. Skilled in HTML5, Bootstrap, UI/UX.",
-      initial: "OT",
-      image: null, // Add image URL if available
+      image: "/omnya.jpeg",
       github: "https://github.com/omnyatarek",
       linkedin: "https://www.linkedin.com/in/omnya137/",
     },
@@ -35,7 +34,7 @@ const AboutUs = () => {
       role: "Software Engineer",
       bio: "Passionate about crafting seamless and user-friendly interfaces with React, modern CSS, and Node.js. Experienced in HTML5, Bootstrap.",
       initial: "EM",
-      image: null, // Add image URL if available,
+      image: "/es.jpeg", // Add image URL if available,
       github: "https://github.com/EsraaMo24",
       linkedin: "https://www.linkedin.com/in/esraa-mostafa243/",
     },
@@ -54,13 +53,13 @@ const AboutUs = () => {
     <div className="public-page about-us-page fade-in">
       <div className="container py-5">
         <div className="text-center mb-5">
-          <h1 className="display-4 fw-bold">About Us</h1>
+          <h1 className="display-5 fw-bold fixed-size">About Us</h1>
           <div className="title-underline"></div>
         </div>
 
         <div className="mission-section">
           <div className="mission-header">
-            <h2>Our Mission</h2>
+            <h2 className="display-5 fw-bold fixed-size">Our Mission</h2>
             <p className="mission-tagline">Empowering Your Fitness Journey</p>
           </div>
 
@@ -153,13 +152,15 @@ const AboutUs = () => {
             <img
               src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
               alt="Fitness journey"
-              className="mission-image"
+              className="mission-image img-fluid"
             />
           </div>
         </div>
 
-        <h2 className="text-center mb-4 mt-5">Our Team</h2>
-        <div className="title-underline mb-5"></div>
+        <div className="text-center mb-4 mt-5">
+          <h2 className="display-5 fw-bold fixed-size">Our Team</h2>
+          <div className="title-underline mb-5"></div>
+        </div>
 
         <div className="row g-4">
           {teamMembers.map((member, index) => (
@@ -176,10 +177,10 @@ const AboutUs = () => {
                 <p className="team-member-role">{member.role}</p>
                 <p className="team-member-bio">{member.bio}</p>
                 <div className="team-member-social">
-                  <a href={member.github} target="_blank" className="social-icon">
+                  <a href={member.github} target="_blank" className="social-icon" rel="noreferrer">
                     <FaGithub />
                   </a>
-                  <a href={member.linkedin} target="_blank" className="social-icon">
+                  <a href={member.linkedin} target="_blank" className="social-icon" rel="noreferrer">
                     <FaLinkedin />
                   </a>
                 </div>

@@ -4,6 +4,8 @@
 /* Custom variables */
 :root {
   --primary-color: #6366f1;
+  --primary-gradient: linear-gradient(90deg, var(--primary-color), #4338ca);
+
   --primary-hover: #4f46e5;
   --secondary-color: #0ea5e9;
   --accent-color: #8b5cf6;
@@ -176,23 +178,23 @@ h6 {
 }
 
 .stats-card-primary {
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-  color: white;
+  background: linear-gradient(135deg, #3a0ca3, #7209b7);  color: white;
+
 }
 
+
 .stats-card-secondary {
-  background: linear-gradient(135deg, var(--secondary-color), #38bdf8);
-  color: white;
+  background: linear-gradient(135deg, #4361ee, #4cc9f0);
+      color: white;
 }
 
 .stats-card-success {
-  background: linear-gradient(135deg, var(--success-color), #34d399);
+  background: linear-gradient(135deg, #7209b7, #f72585);
   color: white;
 }
 
 .stats-card-warning {
-  background: linear-gradient(135deg, var(--warning-color), #fbbf24);
-  color: white;
+background: linear-gradient(135deg, #ef4444, #f87171);  color: white;
 }
 
 .stats-card-icon {
@@ -283,6 +285,8 @@ h6 {
   color: var(--gray-400);
 }
 
+
+
 /* Charts */
 .chart-container {
   height: 300px;
@@ -296,7 +300,14 @@ h6 {
   font-weight: 500;
   border-radius: 6px;
 }
+.badge.bg-light {
+  color: black;
+}
 
+.dark-mode .badge.bg-light {
+  color: rgb(255, 255, 255) !important;
+  background-color: #0f172a!important;
+}
 .badge-in-progress {
   background-color: var(--warning-color);
 }
