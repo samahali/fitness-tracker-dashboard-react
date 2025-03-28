@@ -100,7 +100,14 @@
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   margin: 1rem auto 2rem;
   border-radius: 2px;
+  
 }
+/* Default text color */
+.lead .feature-card {
+  color: #eae6e6; 
+}
+
+
 
 .feature-card {
   background: white;
@@ -108,9 +115,17 @@
   box-shadow: var(--card-shadow);
   padding: 2rem;
   height: 100%;
+  min-width: 350px; /* Add fixed minimum height */
+
   transition: all 0.3s ease;
   text-align: center;
+  overflow: hidden;
+
+
+  
 }
+
+
 
 .dark-mode .feature-card {
   background: var(--gray-100);
@@ -142,7 +157,7 @@
 }
 
 .dark-mode .feature-card h4 {
-  color: #616161;
+  color: #9A8CFA;
 }
 
 .feature-card p {
@@ -199,7 +214,7 @@
 }
 
 .dark-mode h2 {
-  color: #292424;
+  color: #ffffff;
 }
 
 .cta-section .btn-light {

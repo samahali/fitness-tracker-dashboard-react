@@ -3,7 +3,7 @@ const StatCard = ({
   title, 
   value, 
   icon: Icon, 
-  variant = 'primary' 
+  variant = 'primary-gradient' 
 }) => {
   return (
     <div className={`stats-card stats-card-${variant}`}>

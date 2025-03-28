@@ -1,4 +1,12 @@
+::placeholder {
+  color: #999; /* Default gray */
+  opacity: 1; /* Ensures full visibility */
+}
 
+/* Dark mode placeholder color */
+.dark-mode ::placeholder {
+  color: rgba(212, 199, 199, 0.692);
+}
   .workouts-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));

@@ -1,3 +1,4 @@
+
 import { Link, Navigate, useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { FaDumbbell, FaChartLine, FaBullseye, FaMobileAlt, FaLock, FaUserFriends } from "react-icons/fa"
@@ -98,12 +99,12 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-5 bg-light">
-        <div className="container py-4">
+      <section className="py-5 w-100 Features Section">
+        <div className="container py-4 ">
           <div className="text-center mb-5">
             <h2 className="display-5 fw-bold fixed-size">Powerful Features</h2>
             <div className="title-underline"></div>
-            <p className="lead text-muted">Everything you need to achieve your fitness goals</p>
+            <p className="lead">Everything you need to achieve your fitness goals</p>
           </div>
           <div className="row g-4">
             {[
