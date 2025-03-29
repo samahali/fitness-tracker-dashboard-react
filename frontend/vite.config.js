@@ -26,7 +26,9 @@ export default defineConfig(({ mode }) => {
       setupFiles: "./src/setupTests.js",
       coverage: {
         reporter: ["text", "json", "html"],
-        exclude: ["node_modules/", "src/setupTests.js"],
+        exclude: ["node_modules/", "src/setupTests.js", "dist/", ".pnp.*",
+          "*.config.js"
+        ],
       },
       include: ["__tests__/**/*.{test,spec}.{js,jsx}"],
     },
