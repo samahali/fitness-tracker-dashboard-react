@@ -9,7 +9,6 @@ import {
   FaWeight,
   FaDumbbell,
   FaRunning,
-  FaWalking,
   FaHandRock,
   FaRegSadTear,
   FaTrophy,

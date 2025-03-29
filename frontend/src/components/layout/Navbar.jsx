@@ -1,8 +1,8 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
-import { logout } from "../../redux/slices/authSlice"
-import { toggleTheme } from "../../redux/slices/themeSlice"
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../redux/slices/authSlice";
+import { toggleTheme } from "../../redux/slices/themeSlice";
 import {
   FaBars,
   FaTimes,
@@ -10,32 +10,32 @@ import {
   FaSignOutAlt,
   FaCog,
   FaMoon,
-  FaSun
-} from "react-icons/fa"
-import "./Navbar.css"
+  FaSun,
+} from "react-icons/fa";
+import "./Navbar.css";
 
 const Navbar = () => {
-  const dispatch = useDispatch()
-  const { currentUser, isAuthenticated } = useSelector((state) => state.auth)
-  const { mode } = useSelector((state) => state.theme)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const dispatch = useDispatch();
+  const { currentUser, isAuthenticated } = useSelector((state) => state.auth);
+  const { mode } = useSelector((state) => state.theme);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen)
-  }
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen)
-  }
+    setDropdownOpen(!dropdownOpen);
+  };
 
   const handleLogout = () => {
-    dispatch(logout())
-  }
+    dispatch(logout());
+  };
 
   const handleThemeToggle = () => {
-    dispatch(toggleTheme())
-  }
+    dispatch(toggleTheme());
+  };
 
   // The desktop menu is always visible on large screens.
   // The mobile menu is rendered below the header and toggled with the mobile toggle button.
@@ -45,7 +45,11 @@ const Navbar = () => {
       <div className="navbar-container">
         <div className="navbar-logo-container">
           {/* Always visible logo */}
-          <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            to="/"
+            className="navbar-logo"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             <div className="logo-icon">
               <svg
                 viewBox="0 0 24 24"
@@ -102,19 +106,25 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle button (visible only on small screens) */}
-        <button className="mobile-toggle" onClick={toggleMobileMenu} aria-label="Toggle Mobile Menu">
+        <button
+          className="mobile-toggle"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle Mobile Menu"
+        >
           {mobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
         {/* Desktop menu: visible only on large screens */}
-        <nav className="navbar-menu-desktop">
+        <nav role="navigation" className="navbar-menu-desktop" aria-label="desktop navigation">
           {isAuthenticated ? (
             <>
               <div className="navbar-actions">
                 <button
                   className="theme-toggle-btn"
                   onClick={handleThemeToggle}
-                  aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
+                  aria-label={`Switch to ${
+                    mode === "dark" ? "light" : "dark"
+                  } mode`}
                 >
                   {mode === "dark" ? <FaSun /> : <FaMoon />}
                 </button>
@@ -147,7 +157,11 @@ const Navbar = () => {
                   </button>
                   <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
                     <li>
-                      <Link className="dropdown-item" to="/profile" onClick={() => setDropdownOpen(false)}>
+                      <Link
+                        className="dropdown-item"
+                        to="/profile"
+                        onClick={() => setDropdownOpen(false)}
+                      >
                         <FaUserCircle className="me-2" /> Profile
                       </Link>
                     </li>
@@ -179,7 +193,9 @@ const Navbar = () => {
                 <button
                   className="theme-toggle-btn"
                   onClick={handleThemeToggle}
-                  aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
+                  aria-label={`Switch to ${
+                    mode === "dark" ? "light" : "dark"
+                  } mode`}
                 >
                   {mode === "dark" ? <FaSun /> : <FaMoon />}
                 </button>
@@ -205,7 +221,9 @@ const Navbar = () => {
               <button
                 className="theme-toggle-btn"
                 onClick={handleThemeToggle}
-                aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
+                aria-label={`Switch to ${
+                  mode === "dark" ? "light" : "dark"
+                } mode`}
               >
                 {mode === "dark" ? <FaSun /> : <FaMoon />}
               </button>
@@ -238,12 +256,26 @@ const Navbar = () => {
                 </button>
                 <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
                   <li>
-                    <Link className="dropdown-item" to="/profile" onClick={() => { setDropdownOpen(false); setMobileMenuOpen(false) }}>
+                    <Link
+                      className="dropdown-item"
+                      to="/profile"
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        setMobileMenuOpen(false);
+                      }}
+                    >
                       <FaUserCircle className="me-2" /> Profile
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/settings" onClick={() => { setDropdownOpen(false); setMobileMenuOpen(false) }}>
+                    <Link
+                      className="dropdown-item"
+                      to="/settings"
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        setMobileMenuOpen(false);
+                      }}
+                    >
                       <FaCog className="me-2" /> Settings
                     </Link>
                   </li>
@@ -251,7 +283,13 @@ const Navbar = () => {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <button className="dropdown-item" onClick={() => { setMobileMenuOpen(false); handleLogout() }}>
+                    <button
+                      className="dropdown-item"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        handleLogout();
+                      }}
+                    >
                       <FaSignOutAlt className="me-2" /> Logout
                     </button>
                   </li>
@@ -263,10 +301,18 @@ const Navbar = () => {
           <>
             <div className="navbar-nav">
               <div className="nav-links-container">
-                <Link to="/about" className="nav-link" onClick={() => setMobileMenuOpen(false)}>
+                <Link
+                  to="/about"
+                  className="nav-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   About
                 </Link>
-                <Link to="/contact" className="nav-link" onClick={() => setMobileMenuOpen(false)}>
+                <Link
+                  to="/contact"
+                  className="nav-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   Contact
                 </Link>
               </div>
@@ -275,16 +321,26 @@ const Navbar = () => {
               <button
                 className="theme-toggle-btn"
                 onClick={handleThemeToggle}
-                aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
+                aria-label={`Switch to ${
+                  mode === "dark" ? "light" : "dark"
+                } mode`}
               >
                 {mode === "dark" ? <FaSun /> : <FaMoon />}
               </button>
             </div>
             <div className="navbar-auth">
-              <Link to="/login" className="navbar-auth-link" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                to="/login"
+                className="navbar-auth-link"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Login
               </Link>
-              <Link to="/register" className="navbar-auth-btn" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                to="/register"
+                className="navbar-auth-btn"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Register
               </Link>
             </div>
@@ -292,7 +348,7 @@ const Navbar = () => {
         )}
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
