@@ -15,5 +15,22 @@ export default defineConfig(({ mode }) => {
         usePolling: true, // Enable polling for file changes
       },
     },
+    // test: {
+    //   globals: true,
+    //   environment: 'jsdom', // Simulates a browser-like environment
+    //   setupFiles: './src/setupTests.js', // Global setup file
+    // },
+    test: {
+      globals: true,
+      environment: "jsdom",
+      setupFiles: "./src/setupTests.js",
+      coverage: {
+        reporter: ["text", "json", "html"],
+        exclude: ["node_modules/", "src/setupTests.js", "dist/", ".pnp.*",
+          "*.config.js"
+        ],
+      },
+      include: ["__tests__/**/*.{test,spec}.{js,jsx}"],
+    },
   };
 });
