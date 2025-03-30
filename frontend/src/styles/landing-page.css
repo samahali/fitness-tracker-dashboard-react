@@ -8,11 +8,8 @@
     width: 100%;
   }
   
-  .landing-page .main-content {
+  .main-content:has(.landing-page) {
     margin-left: 0 !important;
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
   }
   /* Hero section */
   .hero-section {
@@ -84,11 +81,12 @@
   
   /* Features section */
   .bg-light {
-    background-color: var(--gray-100);
+    background-color: var(--gray-800);
   }
   
   .dark-mode .bg-light {
-    background-color: var(--gray-800);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.02), 
+    rgba(139, 92, 246, 0.02)) !important;
   }
   
   .title-underline {
@@ -100,7 +98,7 @@
   }
   
   .feature-card {
-    background: white;
+    background: var(--gray-100);
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
     padding: 2rem;

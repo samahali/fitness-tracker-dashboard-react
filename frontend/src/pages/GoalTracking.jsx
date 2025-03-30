@@ -5,8 +5,7 @@ import GoalForm from "../components/goals/GoalForm"
 import GoalList from "../components/goals/GoalList"
 import Loader from "../components/common/Loader"
 import { FaPlus, FaTimes } from "react-icons/fa"
-import "../components/goals/GoalList.css"
-import "../components/goals/GoalForm.css"
+import "../styles/goal-tracking.css"
 
 const GoalTracking = () => {
   const dispatch = useDispatch()

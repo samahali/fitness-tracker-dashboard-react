@@ -14,7 +14,7 @@ const LandingPage = () => {
   return (
     <div className="landing-page public-page">
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="hero-section w-100">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6 hero-content">
@@ -44,7 +44,7 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-5 bg-light">
+      <section className="py-5 bg-light w-100">
         <div className="container py-4">
           <div className="text-center mb-5">
             <h2 className="display-5 fw-bold">Powerful Features</h2>
@@ -119,7 +119,7 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
+      <section className="cta-section w-100">
         <div className="container py-4 text-center">
           <h2 className="display-5 fw-bold mb-4">Ready to Start Your Fitness Journey?</h2>
           <p className="lead mb-4">Join thousands of users who have transformed their lives with FitPulse</p>

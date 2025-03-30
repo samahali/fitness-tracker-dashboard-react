@@ -1046,12 +1046,4 @@
   }
 }
 
-/* Add these to your CSS variables if not already present */
-:root {
-  --gray-750: #2d3748;
-  --gray-800: #1a202c;
-  --gray-850: #171923;
-  --gray-900: #0f172a;
-  --accent-color: #8b5cf6;
-}
 

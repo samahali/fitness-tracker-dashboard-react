@@ -129,7 +129,7 @@ const Profile = () => {
                   required
                   disabled
                 />
-                <small className="text-muted">Email cannot be changed</small>
+                <small className="text-dark-emphasis">Email cannot be changed</small>
               </div>
 
               <h5 className="mt-4 mb-3">Physical Information</h5>
