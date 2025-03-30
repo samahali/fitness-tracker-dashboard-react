@@ -1,4 +1,12 @@
+::placeholder {
+  color: #999; /* Default gray */
+  opacity: 1; /* Ensures full visibility */
+}
 
+/* Dark mode placeholder color */
+.dark-mode ::placeholder {
+  color: rgba(212, 199, 199, 0.692);
+}
   .workouts-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -770,14 +778,6 @@
       grid-template-columns: 1fr;
     }
   }
-  
-  /* Add these to your CSS variables if not already present */
-  :root {
-    --gray-750: #2d3748;
-    --gray-800: #1a202c;
-    --gray-850: #171923;
-    --gray-900: #0f172a; /* Darker shade for notes in dark mode */
-    --accent-color: #8b5cf6;
-  }
+
   
   

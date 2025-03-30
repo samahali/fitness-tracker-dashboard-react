@@ -5,8 +5,7 @@ import WorkoutForm from "../components/workouts/WorkoutForm"
 import WorkoutList from "../components/workouts/WorkoutList"
 import Loader from "../components/common/Loader"
 import { FaPlus, FaTimes } from "react-icons/fa"
-import "../components/workouts/WorkoutForm.css"
-import "../components/workouts/WorkoutList.css"
+import "../styles/workout-log.css"
 
 const WorkoutLog = () => {
   const dispatch = useDispatch()

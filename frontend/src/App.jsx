@@ -10,8 +10,6 @@ import Loader from "./components/common/Loader"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css"
-import "./styles/goal-tracking.css"
-import "./styles/workout-log.css"
 
 // Lazy load components for better performance
 const Dashboard = lazy(() => import("./pages/Dashboard"))

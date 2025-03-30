@@ -12,18 +12,15 @@
   width: 100%;
 }
 
-.public-page .main-content {
+.main-content:has(.public-page) {
   margin-left: 0 !important;
   width: 100%;
-  padding-left: 0;
-  padding-right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .public-page .container {
-  max-width: 1200px;
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -514,7 +511,7 @@
 /* Fix for mobile view */
 @media (max-width: 768px) {
   .mission-section {
-    overflow: hidden; /* Prevent horizontal scroll */
+    padding: 0px;
   }
 
   .mission-content {

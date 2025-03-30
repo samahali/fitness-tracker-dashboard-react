@@ -15,7 +15,7 @@ describe("StatCard Component", () => {
 
     // Check if the default variant class is applied
     const cardElement = document.querySelector(".stats-card")
-    expect(cardElement).toHaveClass("stats-card-primary")
+    expect(cardElement).toHaveClass("stats-card-primary-gradient")
   })
 
   it("renders with custom variant", () => {
