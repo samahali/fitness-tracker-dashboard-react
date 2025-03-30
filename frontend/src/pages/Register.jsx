@@ -1,7 +1,9 @@
+"use client"
+
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { registerUser } from "../redux/slices/authSlice"
+import { registerUser, clearError } from "../redux/slices/authSlice"
 import {
   FaArrowLeft,
   FaArrowRight,
@@ -53,6 +55,11 @@ const Register = () => {
       document.body.classList.remove("auth-page")
     }
   }, [isAuthenticated, navigate])
+
+  // Clear any previous errors when component mounts
+  useEffect(() => {
+    dispatch(clearError())
+  }, [dispatch])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -115,19 +122,35 @@ const Register = () => {
 
   const handleCompleteRegistration = async () => {
     try {
-      // Remove confirmPassword before sending to API
-      const { confirmPassword, ...userData } = formData
-
-      // Show loading state
+      // Clear any previous errors
+      dispatch(clearError())
       setPasswordError("")
 
-      // Dispatch the registerUser action
-      await dispatch(registerUser(userData)).unwrap()
+      // Prepare the data for API submission
+      const { confirmPassword, ...userData } = formData
 
-      // Redirect to dashboard after successful registration
-      navigate("/dashboard")
+      // Convert empty strings to null for optional fields
+      const processedData = Object.entries(userData).reduce((acc, [key, value]) => {
+        // Only convert empty strings for optional fields
+        if (["age", "gender", "weight", "height"].includes(key)) {
+          acc[key] = value === "" ? null : value
+        } else {
+          acc[key] = value
+        }
+        return acc
+      }, {})
+
+      // Dispatch the registerUser action
+      const resultAction = await dispatch(registerUser(processedData))
+
+      if (registerUser.fulfilled.match(resultAction)) {
+        // Registration successful - navigate to dashboard
+        navigate("/dashboard")
+      }
+      // If rejected, the error will be handled by the reducer and displayed
     } catch (err) {
       console.error("Registration failed:", err)
+      setPasswordError("An unexpected error occurred. Please try again.")
     }
   }
 
