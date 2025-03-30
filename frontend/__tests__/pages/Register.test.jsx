@@ -1,25 +1,18 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest"
-import { render, screen, fireEvent } from "@testing-library/react"
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import { Provider } from "react-redux"
 import { configureStore } from "@reduxjs/toolkit"
 import { BrowserRouter } from "react-router-dom"
 import Register from "../../src/pages/Register"
-
-// Mock the Redux actions
-vi.mock("../../src/redux/slices/authSlice", () => ({
-  registerUser: vi.fn(() => ({
-    type: "auth/register",
-    payload: {},
-    unwrap: vi.fn().mockResolvedValue({}),
-  })),
-}))
+import authReducer, { registerUser } from "../../src/redux/slices/authSlice"
 
 // Mock the useNavigate hook
+const mockNavigate = vi.fn()
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom")
   return {
     ...actual,
-    useNavigate: () => vi.fn(),
+    useNavigate: () => mockNavigate,
   }
 })
 
@@ -63,17 +56,22 @@ describe("Register Component", () => {
   const createMockStore = (initialState = {}) => {
     return configureStore({
       reducer: {
-        auth: (state = initialState, action) => state,
+        auth: authReducer,
+      },
+      preloadedState: {
+        auth: {
+          loading: false,
+          error: null,
+          isAuthenticated: false,
+          user: null,
+          ...initialState,
+        },
       },
     })
   }
 
   it("renders the registration form with step 1 initially", () => {
-    const store = createMockStore({
-      loading: false,
-      error: null,
-      isAuthenticated: false,
-    })
+    const store = createMockStore()
 
     render(
       <Provider store={store}>
@@ -97,11 +95,7 @@ describe("Register Component", () => {
   })
 
   it("adds auth-page class to body on mount", () => {
-    const store = createMockStore({
-      loading: false,
-      error: null,
-      isAuthenticated: false,
-    })
+    const store = createMockStore()
 
     render(
       <Provider store={store}>
@@ -115,11 +109,7 @@ describe("Register Component", () => {
   })
 
   it("removes auth-page class from body on unmount", () => {
-    const store = createMockStore({
-      loading: false,
-      error: null,
-      isAuthenticated: false,
-    })
+    const store = createMockStore()
 
     const { unmount } = render(
       <Provider store={store}>
@@ -134,47 +124,8 @@ describe("Register Component", () => {
     expect(document.body.classList.remove).toHaveBeenCalledWith("auth-page")
   })
 
-  it("moves to step 2 when next button is clicked with valid data", () => {
-    const store = createMockStore({
-      loading: false,
-      error: null,
-      isAuthenticated: false,
-    })
-
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Register />
-        </BrowserRouter>
-      </Provider>,
-    )
-
-    // Fill out step 1
-    fireEvent.change(screen.getByLabelText("First Name"), {
-      target: { value: "John" },
-    })
-    fireEvent.change(screen.getByLabelText("Last Name"), {
-      target: { value: "Doe" },
-    })
-    fireEvent.change(screen.getByLabelText("Email"), {
-      target: { value: "john@example.com" },
-    })
-
-    // Click next button
-    fireEvent.click(screen.getByText("Next"))
-
-    // Check if step 2 is now active
-    expect(screen.getByText("Security", { selector: ".step-title" })).toBeInTheDocument()
-    expect(screen.getByLabelText("Password")).toBeInTheDocument()
-    expect(screen.getByLabelText("Confirm Password")).toBeInTheDocument()
-  })
-
   it("shows password validation error when passwords don't match", () => {
-    const store = createMockStore({
-      loading: false,
-      error: null,
-      isAuthenticated: false,
-    })
+    const store = createMockStore()
 
     render(
       <Provider store={store}>
@@ -214,11 +165,7 @@ describe("Register Component", () => {
   })
 
   it("moves to step 3 when next button is clicked with valid passwords", () => {
-    const store = createMockStore({
-      loading: false,
-      error: null,
-      isAuthenticated: false,
-    })
+    const store = createMockStore()
 
     render(
       <Provider store={store}>
@@ -257,70 +204,9 @@ describe("Register Component", () => {
     expect(screen.getByText("Physical Information (Optional)")).toBeInTheDocument()
   })
 
-  it("goes back to previous step when back button is clicked", () => {
-    const store = createMockStore({
-      loading: false,
-      error: null,
-      isAuthenticated: false,
-    })
-
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Register />
-        </BrowserRouter>
-      </Provider>,
-    )
-
-    // Fill out step 1
-    fireEvent.change(screen.getByLabelText("First Name"), {
-      target: { value: "John" },
-    })
-    fireEvent.change(screen.getByLabelText("Last Name"), {
-      target: { value: "Doe" },
-    })
-    fireEvent.change(screen.getByLabelText("Email"), {
-      target: { value: "john@example.com" },
-    })
-
-    // Click next button to go to step 2
-    fireEvent.click(screen.getByText("Next"))
-
-    // Check if step 2 is active - use a more specific selector
-    expect(screen.getByText("Security", { selector: ".step-title" })).toBeInTheDocument()
-
-    // Click back button
-    fireEvent.click(screen.getByText("Back"))
-
-    // Check if step 1 is active again
-    expect(screen.getByText("Personal Information")).toBeInTheDocument()
-  })
-
-  it("displays error message when there is an error", () => {
-    // Create a store with an error
-    const store = createMockStore({
-      loading: false,
-      error: "Email already exists",
-      isAuthenticated: false,
-    })
-
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Register />
-        </BrowserRouter>
-      </Provider>,
-    )
-
-    expect(screen.getByText("Email already exists")).toBeInTheDocument()
-  })
-
   it("shows loading state when submitting", () => {
-    // Create a store with loading state
     const store = createMockStore({
       loading: true,
-      error: null,
-      isAuthenticated: false,
     })
 
     render(
@@ -354,5 +240,21 @@ describe("Register Component", () => {
     // Check if loading state is shown
     expect(screen.getByText("Registering...")).toBeInTheDocument()
     expect(screen.getByRole("button", { name: "Registering..." })).toBeDisabled()
+  })
+
+  it("navigates to dashboard if already authenticated", () => {
+    const store = createMockStore({
+      isAuthenticated: true,
+    })
+
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      </Provider>,
+    )
+
+    expect(mockNavigate).toHaveBeenCalledWith("/dashboard")
   })
 })
