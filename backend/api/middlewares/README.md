@@ -7,5 +7,5 @@ This folder contains reusable middleware functions.
 
 ## 📍Example Middleware Usage
 ```javascript
-const authMiddleware = require("../middlewares/auth.middleware");
+import authMiddleware from "../middlewares/auth.middleware";
 app.use("/api/workouts", authMiddleware, workoutRoutes);

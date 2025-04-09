@@ -8,8 +8,8 @@ This folder contains Express route definitions for different API endpoints.
 
 ## 📍Example Route
 ```javascript
-const express = require("express");
-const { createWorkout } = require("../controllers/workout.controller");
+import express from "express";
+import { createWorkout } from "../controllers/workout.controller";
 
 const router = express.Router();
 router.post("/workouts", createWorkout);

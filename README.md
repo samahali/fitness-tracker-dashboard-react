@@ -1,152 +1,154 @@
-# **Fitness Tracker Dashboard**  
+# 🏋️‍♀️ Fitness Tracker Dashboard
 
 ## 📌 Overview  
-The **Fitness Tracker Dashboard** is a full-stack web application built using **React.js (frontend)**, **Express.js (backend)**, and **MongoDB (database)**. The app allows users to track their workouts, monitor fitness progress, and visualize data using interactive charts.
+The **Fitness Tracker Dashboard** is a full-stack web application designed to help users **track workouts**, **monitor fitness progress**, and **visualize performance** over time through interactive charts and dashboards.
+
+This project follows a modern development workflow using **React.js** for the frontend, **Express.js** and **MongoDB** for the backend, and **Docker** for containerized deployment.
 
 ---
 
 ## 🏗️ Tech Stack  
-### **Frontend:**  
-- React.js (Vite for fast builds)  
-- Yarn 4.6.0 (Package manager)  
-- Bootstrap 5 (Styling)  
-- Chart.js (Data visualization)  
 
-### **Backend:**  
-- Node.js (Express.js framework)  
-- MongoDB (Mongoose for database modeling)  
-- JWT Authentication  
-- Docker & Docker Compose  
+### **Frontend**  
+- ⚛️ **React.js** (Vite for lightning-fast builds)  
+- 🎨 **Bootstrap 5** + **Bootstrap Icons**  
+- 📊 **Chart.js** & **Recharts** (Interactive visualizations)  
+- 🌍 **React Router DOM**  
+- 🔍 **Redux Toolkit** & **Redux Thunk**  
+- 🧪 **Vitest**, **Testing Library**, **ESLint**
+
+### **Backend**  
+- 🚀 **Node.js** with **Express.js**  
+- 📂 **MongoDB** with **Mongoose**  
+- 🔐 **JWT Authentication**  
+- ☁️ **Cloudinary** (Image storage)  
+- 📦 **Docker & Docker Compose**  
+- 📋 **Mocha**, **Chai**, **Sinon**, **Supertest**
 
 ---
 
 ## 🚀 Features  
-✅ User authentication (Sign up, login, JWT-based authorization)  
-✅ Dashboard with fitness tracking data  
-✅ Interactive charts for progress monitoring  
-✅ RESTful API endpoints for managing workouts  
-✅ Dockerized deployment setup  
+✅ User registration & login (JWT authentication)  
+✅ Secure image upload with Cloudinary  
+✅ Dashboard displaying user workout data  
+✅ Interactive data visualizations  
+✅ RESTful API for workouts management  
+✅ Volume-mounted local development via Docker  
+✅ Testing setup with code coverage support  
 
 ---
 
 ## ⚙️ Installation & Setup  
 
-### **1️⃣ Clone the Repository**  
-```sh
+### 1️⃣ Clone the Repository  
+```bash
 git clone https://github.com/samahali/fitness-tracker-dashboard-react.git
 cd fitness-tracker-dashboard-react
 ```
 
-### **2️⃣ Set Up Environment Variables**  
-Create a `.env` file inside the **backend/** folder and add:  
+### 2️⃣ Set Up Environment Variables  
+Create a `.env` file inside the `backend/` directory:
+
 ```env
 PORT=5000
 MONGO_URI=mongodb://mongo:27017/fitnessDB
 JWT_SECRET=your_secret_key
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 ---
 
 ## 🐳 Running the App with Docker  
 
-**Note:** The `docker-compose.yml` file here is implemented for local development only and is not intended for production. For production deployment, this project is hosted on **Render**, which handles the deployment with a `Dockerfile` rather than `docker-compose.yml`. 
-Additionally, for development, we use a `Dockerfile.dev` to configure the environment appropriately for local development.
+**Note:** This Docker setup is for **local development** only. For **production**, the app is deployed on **Render** using a `Dockerfile`.
 
-### **3️⃣ Start the Docker Containers**  
-Make sure **Docker** and **Docker Compose** are installed, then run:  
-```sh
-docker-compose up --build
-```
-or
-```sh
+### 3️⃣ Build & Start Containers  
+Make sure Docker and Docker Compose are installed:
+
+```bash
 docker compose up --build
 ```
-- The **frontend** will be available at: `http://localhost:3000`  
-- The **backend** will be available at: `http://localhost:5000`  
 
-### **4️⃣ Reflect Code Changes Inside Docker (Auto-Reload)**  
-To make sure changes in your code reflect inside Docker without restarting, we have set up **volume mounting** in `docker-compose.yml`.  
+- Frontend: `http://localhost:5173`  
+- Backend: `http://localhost:5000`
 
-✅ **For backend changes**, they will be reflected automatically. No need to restart Docker.  
-✅ **For frontend changes**, they will also update automatically.  
+### 4️⃣ Auto-Reload (Volume Mounting)  
+- ✅ Frontend and backend support **hot-reloading**  
+- 🚨 For **new package installs**, do the following:
 
-However, **if you install new packages**, follow these steps:  
-1. Install the package inside Docker:  
-   ```sh
-   docker-compose exec backend yarn add package-name
-   ```
-   or
-   ```sh
-   docker compose exec backend yarn add package-name
-   ```
-2. Ensure it's saved in `package.json`:  
-   ```sh
-   docker-compose exec backend yarn install
-   ```
-   or
-   ```sh
-   docker compose exec backend yarn install
-   ```
-3. If needed, restart the container:  
-   ```sh
-   docker-compose down && docker-compose up
-   ```
-    or
-   ```sh
-   docker compose down && docker compose up
-   ```
+```bash
+docker compose exec backend yarn add <package-name>
+docker compose exec backend yarn install
+docker compose down && docker compose up
+```
+
 ---
-To see record in mongo db
-docker exec -it fitness-tracker-dashboard-react-mongo-1 mongosh
-test> use fitnessDB
-fitnessDB> show collections
-fitnessDB> db.users.find().pretty()
 
-### Run Tests in Docker
-1- Run your tests inside the container:
+## 🛠️ Running Without Docker  
 
-sh
-```
-docker compose exec backend yarn test
-```
-2- To run tests in watch mode (auto-restart when files change):
-
-sh
-```
-docker compose exec backend yarn test --watch
-```
-3- For test coverage:
-
-sh
-```
-docker compose exec backend yarn test --coverage
-```
-
-## ⚡ Running the App Without Docker  
-If you prefer to run the app without Docker:
-
-### **Backend:**  
-```sh
+### Backend  
+```bash
 cd backend
 yarn
 yarn dev
 ```
-### **Frontend:**  
-```sh
+
+### Frontend  
+```bash
 cd frontend
 yarn
 yarn dev
 ```
-- The frontend will run at `http://localhost:5173`.  
-- The backend will run at `http://localhost:5000`.  
+
+- Frontend: `http://localhost:5173`  
+- Backend: `http://localhost:5000`  
 
 ---
 
-## 🛠️ Authors  
-**Esraa Mostafa**  
-**Mariam Helmy**  
-**Omnya Tarek**  
-**Samah Ali**  
+## 📟 MongoDB Access in Docker
 
-🚀 If you like this project, don't forget to ⭐ the repo!  
+Use this command to access the MongoDB shell:
 
+```bash
+docker exec -it fitness-tracker-dashboard-react-mongo-1 mongosh
+```
+
+Inside Mongo shell:
+```js
+use fitnessDB
+show collections
+db.users.find().pretty()
+```
+
+---
+
+## 🧰 Package Highlights  
+
+### **Backend Dependencies**
+- 🔒 `bcryptjs`, `jsonwebtoken` (security)
+- ☁️ `cloudinary`, `multer` (file/image handling)
+- 📋 `winston` & `winston-daily-rotate-file` (logging)
+- 🧪 `mocha`, `chai`, `supertest`, `sinon`, `esmock`
+
+### **Frontend Dependencies**
+- 🍜 `bootstrap`, `react-bootstrap`, `bootstrap-icons`
+- 📊 `chart.js`, `react-chartjs-2`, `recharts`
+- 🧵 `redux`, `react-redux`, `redux-thunk`
+- 🗓️ `react-day-picker`, `date-fns`
+- 📦 `axios`, `image-compression`
+
+---
+
+## 👥 Authors  
+- **Esraa Mostafa**  
+- **Mariam Helmy**  
+- **Omnya Tarek**  
+- **Samah Ali**  
+
+---
+
+## ⭐ Support  
+If you found this project helpful, please consider giving it a **star**! 🌟  
+We welcome contributions, feedback, and forks!

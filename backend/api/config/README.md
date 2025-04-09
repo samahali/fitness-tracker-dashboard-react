@@ -6,6 +6,7 @@ This folder contains configuration settings for the project.
 - `server.config.js` - Stores server settings (port, CORS, etc.).
 - `jwt.config.js` - Defines JWT secret key and expiration settings.
 - `dotenv.config.js` - Loads environment variables from `.env`.
+- `cloudinary.config.js` - Store cloudinary settings.
 
 ## 🔹 Environment Variables (`.env`)
 To run the project, create a `.env` file in the root directory with the following values:

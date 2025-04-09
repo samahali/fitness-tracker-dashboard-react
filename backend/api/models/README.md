@@ -8,7 +8,7 @@ This folder contains all Mongoose schemas defining the database structure.
 
 ## 📍Example Model
 ```javascript
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const WorkoutSchema = new mongoose.Schema({
   type: String,
   duration: Number,

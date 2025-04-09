@@ -9,5 +9,5 @@ This folder contains helper functions that are reusable throughout the project.
 
 ## 📍 Example Usage
 ```javascript
-const logger = require("../utils/logger");
+import logger from "../utils/logger";
 logger.info("Server started successfully!");
