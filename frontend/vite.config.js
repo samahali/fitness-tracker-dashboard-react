@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const API_BASE_URL = env.VITE_API_BASE_URL || "https://fitness-tracker-dashboard-react.onrender.com";
+  const API_BASE_URL = env.VITE_API_BASE_URL || "https://api-fitpulse-dashboard.onrender.com/";
 
   return {
     plugins: [react()],
@@ -15,11 +15,6 @@ export default defineConfig(({ mode }) => {
         usePolling: true, // Enable polling for file changes
       },
     },
-    // test: {
-    //   globals: true,
-    //   environment: 'jsdom', // Simulates a browser-like environment
-    //   setupFiles: './src/setupTests.js', // Global setup file
-    // },
     test: {
       globals: true,
       environment: "jsdom",
