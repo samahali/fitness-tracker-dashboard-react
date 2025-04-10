@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { logout } from "../../redux/slices/authSlice"
-import { FaTachometerAlt, FaDumbbell, FaBullseye, FaUser, FaSignOutAlt, FaCog, FaTimes } from "react-icons/fa"
+import { FaTachometerAlt, FaDumbbell, FaBullseye, FaUser, FaSignOutAlt, FaTimes } from "react-icons/fa"
 import "./Sidebar.css"
 
 const Sidebar = () => {
