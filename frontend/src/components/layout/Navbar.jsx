@@ -268,18 +268,6 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/settings"
-                      onClick={() => {
-                        setDropdownOpen(false);
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      <FaCog className="me-2" /> Settings
-                    </Link>
-                  </li>
-                  <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>

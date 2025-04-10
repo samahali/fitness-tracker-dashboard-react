@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { logout } from "../../redux/slices/authSlice"
 import { FaTachometerAlt, FaDumbbell, FaBullseye, FaUser, FaSignOutAlt } from "react-icons/fa"
 import "./MobileNavbar.css"
@@ -7,6 +7,7 @@ import "./MobileNavbar.css"
 const MobileNavbar = () => {
   const location = useLocation()
   const dispatch = useDispatch()
+  const { isAuthenticated } = useSelector((state) => state.auth)
 
   const isActive = (path) => {
     return location.pathname === path
@@ -15,6 +16,9 @@ const MobileNavbar = () => {
   const handleLogout = () => {
     dispatch(logout())
   }
+
+  // Only render the mobile navbar if the user is authenticated
+  if (!isAuthenticated) return null
 
   return (
     <div className="mobile-navbar">
@@ -43,4 +47,3 @@ const MobileNavbar = () => {
 }
 
 export default MobileNavbar
-
