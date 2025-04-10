@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const API_BASE_URL = env.VITE_API_BASE_URL || "https://api-fitpulse-dashboard.onrender.com/";
+  const API_BASE_URL = env.VITE_API_BASE_URL || "https://api-fitpulse-dashboard.onrender.com";
 
   return {
     plugins: [react()],
