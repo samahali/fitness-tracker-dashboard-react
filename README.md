@@ -142,10 +142,10 @@ db.users.find().pretty()
 ---
 
 ## 👥 Authors  
-- **Esraa Mostafa**  
-- **Mariam Helmy**  
-- **Omnya Tarek**  
-- **Samah Ali**  
+- **[Esraa Mostafa](https://github.com/EsraaMo24)**  
+- **[Mariam Helmy](https://github.com/MariamHelmy44)**  
+- **[Omnya Tarek](https://github.com/omnyatarek)**  
+- **[Samah Ali](https://github.com/samahali)**  
 
 ---
 
