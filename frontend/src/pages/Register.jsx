@@ -1,9 +1,7 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { registerUser, clearError } from "../redux/slices/authSlice"
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser, clearError } from "../redux/slices/authSlice";
 import {
   FaArrowLeft,
   FaArrowRight,
@@ -18,8 +16,8 @@ import {
   FaVenusMars,
   FaEye,
   FaEyeSlash,
-} from "react-icons/fa"
-import "../styles/auth-pages.css"
+} from "react-icons/fa";
+import "../styles/auth-pages.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -32,131 +30,143 @@ const Register = () => {
     gender: "",
     weight: "",
     height: "",
-  })
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const [passwordError, setPasswordError] = useState("")
-  const [currentStep, setCurrentStep] = useState(1)
-  const { loading, error, isAuthenticated } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [currentStep, setCurrentStep] = useState(1);
+  const { loading, error, isAuthenticated } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // If user is already authenticated, redirect to dashboard
     if (isAuthenticated) {
-      navigate("/dashboard")
+      navigate("/dashboard");
     }
 
     // Add class to body to remove sidebar space
-    document.body.classList.add("auth-page")
+    document.body.classList.add("auth-page");
 
     // Cleanup function
     return () => {
-      document.body.classList.remove("auth-page")
+      document.body.classList.remove("auth-page");
     }
   }, [isAuthenticated, navigate])
 
   // Clear any previous errors when component mounts
   useEffect(() => {
-    dispatch(clearError())
-  }, [dispatch])
+    dispatch(clearError());
+  }, [dispatch]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: ["age", "weight", "height"].includes(name) && value !== "" ? Number.parseFloat(value) : value,
-    })
-  }
+      [name]:
+        ["age", "weight", "height"].includes(name) && value !== ""
+          ? Number.parseFloat(value)
+          : value,
+    });
+  };
 
   const validateStep = (step) => {
-    setPasswordError("")
+    setPasswordError("");
 
     switch (step) {
       case 1:
-        return formData.firstName.trim() !== "" && formData.lastName.trim() !== "" && formData.email.trim() !== ""
+        return (
+          formData.firstName.trim() !== "" &&
+          formData.lastName.trim() !== "" &&
+          formData.email.trim() !== ""
+        );
       case 2:
         if (formData.password.trim() === "") {
-          setPasswordError("Password is required")
-          return false
+          setPasswordError("Password is required");
+          return false;
         }
         if (formData.password.length < 6) {
-          setPasswordError("Password must be at least 6 characters")
-          return false
+          setPasswordError("Password must be at least 6 characters");
+          return false;
         }
         if (formData.password !== formData.confirmPassword) {
-          setPasswordError("Passwords do not match")
-          return false
+          setPasswordError("Passwords do not match");
+          return false;
         }
-        return true
+        return true;
       case 3:
-        return true // Optional fields, so always valid
+        return true; // Optional fields, so always valid
       default:
-        return false
+        return false;
     }
-  }
+  };
 
   const nextStep = () => {
     if (validateStep(currentStep)) {
-      setCurrentStep(currentStep + 1)
+      setCurrentStep(currentStep + 1);
     }
-  }
+  };
 
   const prevStep = () => {
-    setCurrentStep(currentStep - 1)
-  }
+    setCurrentStep(currentStep - 1);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // Ensure validation before proceeding
     if (!validateStep(currentStep)) {
-      return
+      return;
     }
 
     // Move to the next step if not on the final step
     if (currentStep < 3) {
-      nextStep()
+      nextStep();
     }
-  }
+  };
 
   const handleCompleteRegistration = async () => {
     try {
       // Clear any previous errors
-      dispatch(clearError())
-      setPasswordError("")
+      dispatch(clearError());
+      setPasswordError("");
 
       // Prepare the data for API submission
-      const { confirmPassword, ...userData } = formData
+      const { confirmPassword, ...userData } = formData;
 
       // Convert empty strings to null for optional fields
-      const processedData = Object.entries(userData).reduce((acc, [key, value]) => {
-        // Only convert empty strings for optional fields
-        if (["age", "gender", "weight", "height"].includes(key)) {
-          acc[key] = value === "" ? null : value
-        } else {
-          acc[key] = value
-        }
-        return acc
-      }, {})
+      const processedData = Object.entries(userData).reduce(
+        (acc, [key, value]) => {
+          // Only convert empty strings for optional fields
+          if (["age", "gender", "weight", "height"].includes(key)) {
+            acc[key] = value === "" ? null : value;
+          } else {
+            acc[key] = value;
+          }
+          return acc;
+        },
+        {}
+      );
 
       // Dispatch the registerUser action
-      const resultAction = await dispatch(registerUser(processedData))
+      const resultAction = await dispatch(registerUser(processedData));
 
       if (registerUser.fulfilled.match(resultAction)) {
         // Registration successful - navigate to dashboard
-        navigate("/dashboard")
+        navigate("/dashboard");
       }
       // If rejected, the error will be handled by the reducer and displayed
     } catch (err) {
-      console.error("Registration failed:", err)
-      setPasswordError("An unexpected error occurred. Please try again.")
+      console.error("Registration failed:", err);
+      setPasswordError("An unexpected error occurred. Please try again.");
     }
-  }
+  };
 
   // Add CSS for password toggle icon and button positioning
   useEffect(() => {
-    const style = document.createElement("style")
+    const style = document.createElement("style");
     style.innerHTML = `
     .input-with-icon {
       position: relative;
@@ -193,13 +203,13 @@ const Register = () => {
     .stepper-buttons.end-button {
       justify-content: flex-end;
     }
-  `
-    document.head.appendChild(style)
+  `;
+    document.head.appendChild(style);
 
     return () => {
-      document.head.removeChild(style)
-    }
-  }, [])
+      document.head.removeChild(style);
+    };
+  }, []);
 
   const renderStepContent = () => {
     switch (currentStep) {
@@ -261,7 +271,7 @@ const Register = () => {
               </div>
             </div>
           </>
-        )
+        );
       case 2:
         return (
           <>
@@ -279,7 +289,10 @@ const Register = () => {
                   onChange={handleChange}
                   required
                 />
-                <div className="password-toggle-icon" onClick={() => setShowPassword(!showPassword)}>
+                <div
+                  className="password-toggle-icon"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
               </div>
@@ -298,13 +311,16 @@ const Register = () => {
                   onChange={handleChange}
                   required
                 />
-                <div className="password-toggle-icon" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                <div
+                  className="password-toggle-icon"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
                   {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
               </div>
             </div>
           </>
-        )
+        );
       case 3:
         return (
           <>
@@ -389,18 +405,23 @@ const Register = () => {
               </div>
             </div>
           </>
-        )
+        );
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   return (
     <div className="auth-container">
       <div className="auth-card">
         <div className="auth-logo">
           <div className="logo-icon">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-svg">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="logo-svg"
+            >
               <path
                 d="M6.5 14.5V9.5"
                 stroke="currentColor"
@@ -452,18 +473,36 @@ const Register = () => {
 
         <div className="stepper-container">
           <div className="stepper">
-            <div className={`step ${currentStep >= 1 ? "active" : ""} ${currentStep > 1 ? "completed" : ""}`}>
-              <div className="step-icon">{currentStep > 1 ? <FaCheck /> : <FaUser />}</div>
+            <div
+              className={`step ${currentStep >= 1 ? "active" : ""} ${
+                currentStep > 1 ? "completed" : ""
+              }`}
+            >
+              <div className="step-icon">
+                {currentStep > 1 ? <FaCheck /> : <FaUser />}
+              </div>
               <div className="step-label">Personal</div>
             </div>
             <div className="step-line"></div>
-            <div className={`step ${currentStep >= 2 ? "active" : ""} ${currentStep > 2 ? "completed" : ""}`}>
-              <div className="step-icon">{currentStep > 2 ? <FaCheck /> : <FaLock />}</div>
+            <div
+              className={`step ${currentStep >= 2 ? "active" : ""} ${
+                currentStep > 2 ? "completed" : ""
+              }`}
+            >
+              <div className="step-icon">
+                {currentStep > 2 ? <FaCheck /> : <FaLock />}
+              </div>
               <div className="step-label">Security</div>
             </div>
             <div className="step-line"></div>
-            <div className={`step ${currentStep >= 3 ? "active" : ""} ${currentStep > 3 ? "completed" : ""}`}>
-              <div className="step-icon">{currentStep > 3 ? <FaCheck /> : <FaRulerVertical />}</div>
+            <div
+              className={`step ${currentStep >= 3 ? "active" : ""} ${
+                currentStep > 3 ? "completed" : ""
+              }`}
+            >
+              <div className="step-icon">
+                {currentStep > 3 ? <FaCheck /> : <FaRulerVertical />}
+              </div>
               <div className="step-label">Physical</div>
             </div>
           </div>
@@ -486,20 +525,32 @@ const Register = () => {
 
           {currentStep === 1 ? (
             <div className="stepper-buttons end-button">
-              <button type="button" className="btn btn-primary" onClick={nextStep}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={nextStep}
+              >
                 Next <FaArrowRight className="ms-2" />
               </button>
             </div>
           ) : (
             <div className="stepper-buttons">
               {currentStep > 1 && (
-                <button type="button" className="btn btn-outline-primary" onClick={prevStep}>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={prevStep}
+                >
                   <FaArrowLeft className="me-2" /> Back
                 </button>
               )}
 
               {currentStep < 3 ? (
-                <button type="button" className="btn btn-primary" onClick={nextStep}>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={nextStep}
+                >
                   Next <FaArrowRight className="ms-2" />
                 </button>
               ) : (
@@ -511,7 +562,11 @@ const Register = () => {
                 >
                   {loading ? (
                     <>
-                      <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                      <span
+                        className="spinner-border spinner-border-sm me-2"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
                       Registering...
                     </>
                   ) : (
@@ -530,8 +585,7 @@ const Register = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
-
+export default Register;
